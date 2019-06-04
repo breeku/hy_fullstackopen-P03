@@ -2,9 +2,12 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
+const cors = require("cors")
 const port = 3001;
 
 app.use(bodyParser.json());
+
+app.use(cors())
 
 // https://stackoverflow.com/questions/51409771/logging-post-body-size-using-morgan-when-request-is-received
 morgan.token("body", function(req, res) {
@@ -80,7 +83,7 @@ app.post("/api/persons", (req, res) => {
     };
 
     json = json.concat(person);
-    res.status(200).end();
+    res.status(200).json(id);
 });
 
 let generateId = max => {
