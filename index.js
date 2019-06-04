@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const cors = require("cors")
-const port = 3001;
+const port = process.env.PORT
 
 app.use(bodyParser.json());
 
@@ -96,4 +96,4 @@ let generateId = max => {
     return id;
 };
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(`Server listening on port ${port}!`));
