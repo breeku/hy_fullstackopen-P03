@@ -9,6 +9,8 @@ app.use(bodyParser.json());
 
 app.use(cors())
 
+app.use(express.static('build'))
+
 // https://stackoverflow.com/questions/51409771/logging-post-body-size-using-morgan-when-request-is-received
 morgan.token("body", function(req, res) {
     return JSON.stringify(req.body);
@@ -41,7 +43,7 @@ app.get("/api/persons", (req, res) => {
     res.send(json);
 });
 
-app.get("/info", (req, res) => {
+app.get("/api/info", (req, res) => {
     let length = json.length;
     res.send(
         "Phonebook has info for " + length + " people <br><br>" + new Date()
